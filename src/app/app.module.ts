@@ -9,6 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './pages/home/home.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,13 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     ComponentsModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
