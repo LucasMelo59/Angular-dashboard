@@ -9,6 +9,9 @@ import { ChartModule } from 'angular-highcharts';
 import { CustomersByTypeTaxationComponent } from './customers-by-type-taxation/customers-by-type-taxation.component';
 import { RouterModule } from '@angular/router';
 import { TabelaComponent } from './tabela/tabela.component';
+import { MaterialModule } from '../../assets/modules/material.module';
+import { FormComponent } from './form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,12 +23,16 @@ import { TabelaComponent } from './tabela/tabela.component';
     CustomersByTypeTaxationComponent,
     NumberOfCustomersComponent,
     TabelaComponent,
+    FormComponent,
   ],
   imports: [
     CommonModule,
     ChartModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,

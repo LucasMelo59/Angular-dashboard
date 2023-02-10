@@ -11,23 +11,30 @@ import { ClienteComponent } from './pages/cliente/cliente.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MaterialModule } from '../assets/modules/material.module';
+import { CadastroClientesComponent } from './pages/cadastro-clientes/cadastro-clientes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponentTemplate,
     HomeComponent,
-    ClienteComponent
+    ClienteComponent,
+    CadastroClientesComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
     AppRoutingModule,
     ComponentsModule,
     FontAwesomeModule,
     RouterModule,
     HttpClientModule,
-
+    NgxSpinnerModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
