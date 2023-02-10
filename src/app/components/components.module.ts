@@ -8,6 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartModule } from 'angular-highcharts';
 import { CustomersByTypeTaxationComponent } from './customers-by-type-taxation/customers-by-type-taxation.component';
 import { RouterModule } from '@angular/router';
+import { TabelaComponent } from './tabela/tabela.component';
 
 
 
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     TopWidgetsComponent,
     CustomersByTypeTaxationComponent,
     NumberOfCustomersComponent,
+    TabelaComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { RouterModule } from '@angular/router';
     SideNavComponent,
     TopWidgetsComponent,
     NumberOfCustomersComponent,
-    CustomersByTypeTaxationComponent
+    CustomersByTypeTaxationComponent,
+    TabelaComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,0 +1,24 @@
+<div class="card" style="width: 70rem; " >
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Dados</th>
+        <th scope="col">Valentia</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Nome Operador Transacional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items"  >
+        <td>{{item.data_transferencia | date: 'dd/MM/yyyy' }}</td>
+        <td> {{item.valor | currency}}</td>
+        <td>{{item.tipo}}</td>
+        <td *ngIf="item.nome_operador_transacao else semNome"  >{{item.nome_operador_transacao}}</td>
+        <ng-template #semNome>
+          <td>Sem Nome</td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
