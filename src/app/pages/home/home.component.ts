@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home-pages',
@@ -8,14 +9,19 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private spinner: NgxSpinnerService, private service: HomeService) { }
+
+  qtdClientesTipoSimplesNacional!: number;
+  qtdClientesTipoLucroPresumido!: number;
+
 
   ngOnInit(): void {
-    this.spinner.show();
+    // this.spinner.show();
 
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 2000);
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 2000);
+
   }
   }
 

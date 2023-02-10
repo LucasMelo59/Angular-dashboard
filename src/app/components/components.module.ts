@@ -40,7 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TopWidgetsComponent,
     NumberOfCustomersComponent,
     CustomersByTypeTaxationComponent,
-    TabelaComponent
+    TabelaComponent,
+    FormComponent
   ]
 })
 export class ComponentsModule { }

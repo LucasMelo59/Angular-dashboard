@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ClienteService } from '../../pages/cliente/cliente.service';
+import { Cliente } from '../../model/entity/cliente';
 
 
 const ELEMENT_DATA: any[] = [
@@ -32,16 +34,29 @@ const ELEMENT_DATA: any[] = [
   styleUrls: ['./tabela.component.scss']
 })
 export class TabelaComponent implements OnInit, AfterViewInit {
-  items: any;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
+  dataSource =  new MatTableDataSource<any>(ELEMENT_DATA) ;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    // const teste = {
+    //   razao_social: null
+    // }
+    // this.service.findByRazaoSocial(teste)
+    // .subscribe(
+    //   {
+    //     next: (res: any) => {
+    //       this.dataSource = new MatTableDataSource<any>(res)
+    //     console.log(res);
+
+    //     }
+
+    //   }
+    // )
   }
-  constructor() { }
+  constructor(private service: ClienteService) { }
 
   ngOnInit(): void {
   }

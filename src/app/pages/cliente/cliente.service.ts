@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Cliente } from "src/app/model/entity/cliente";
@@ -6,6 +6,7 @@ import { Cliente } from "src/app/model/entity/cliente";
 @Injectable({
   providedIn: 'root'
 })
+
 
   export class ClienteService {
 
@@ -21,8 +22,8 @@ import { Cliente } from "src/app/model/entity/cliente";
       return this.http.post<Cliente>(`${this.apiUrl}`, model)
     }
 
-    findByRazaoSocial (model: string): Observable<Cliente>{
-      return this.http.post<Cliente>(`${this.apiUrl}/find`, model)
+    findByRazaoSocial (model: any): Observable<Cliente>{
+      return this.http.get<Cliente>(`${this.apiUrl}/find`, {headers: {razaoSocial: model}})
     }
 
     delete(model: number) {

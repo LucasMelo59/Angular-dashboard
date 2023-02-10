@@ -13,10 +13,10 @@ export class ClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getAll().subscribe(res => console.log(res));
-    this.spinner.show();
+    // this.spinner.show();
 
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 2000);
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 2000);
   }
 }
