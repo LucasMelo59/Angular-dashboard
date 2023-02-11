@@ -4,6 +4,7 @@ import { HomeComponentTemplate } from './template/home/home.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import { CadastroClientesComponent } from './pages/cadastro-clientes/cadastro-clientes.component';
+import { NotasFicaisComponent } from './pages/notas-ficais/notas-ficais.component';
 
 const routes: Routes = [{
   path: "dashboard" , component: HomeComponentTemplate, children:[
@@ -19,7 +20,13 @@ const routes: Routes = [{
   path: "cadastro-clientes", component: HomeComponentTemplate, children: [
     {path: '', component: CadastroClientesComponent}
   ]
-}
+},
+{
+  path: "notas-ficais", component: HomeComponentTemplate, children: [
+    {path: '', component: NotasFicaisComponent}
+  ]
+},
+{path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({

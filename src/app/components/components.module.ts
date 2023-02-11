@@ -8,11 +8,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChartModule } from 'angular-highcharts';
 import { CustomersByTypeTaxationComponent } from './customers-by-type-taxation/customers-by-type-taxation.component';
 import { RouterModule } from '@angular/router';
-import { TabelaComponent } from './tabela/tabela.component';
+import { TabelaComponent } from './tabela-clientes/tabela.component';
 import { MaterialModule } from '../../assets/modules/material.module';
-import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { TabelaNotasFicaisComponent } from './tabela-notas-ficais/tabela-notas-ficais.component';
+import { FormNotaFiscalComponent } from './form-nota-fiscal/form-nota-fiscal.component';
+import { FormComponent } from './form-clientes/form.component';
 
 
 
@@ -25,6 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
     NumberOfCustomersComponent,
     TabelaComponent,
     FormComponent,
+    TabelaNotasFicaisComponent,
+    FormNotaFiscalComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,8 @@ import { ToastrModule } from 'ngx-toastr';
     NumberOfCustomersComponent,
     CustomersByTypeTaxationComponent,
     TabelaComponent,
-    FormComponent
+    FormComponent,
+    TabelaNotasFicaisComponent
   ]
 })
 export class ComponentsModule { }

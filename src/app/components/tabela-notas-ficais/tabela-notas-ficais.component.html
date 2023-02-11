@@ -1,0 +1,70 @@
+
+<ng-content></ng-content>
+<div class="ml-2 mt-3 mr-2" >
+  <div class="table-inputs " >
+    <mat-form-field class="filter mr-2"  appearance="fill">
+      <mat-icon matPrefix>filter_alt</mat-icon>
+      <mat-label>Clientes</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente.value">
+          {{cliente.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+   <div class="button" >
+    <button  mat-raised-button color="primary" (click)="openDialog()" >Cadastrar Notas Fiscais</button>
+   </div>
+ </div>
+
+ <div class="mat-elevation-z8">
+   <table aria-describedby="lista de clientes" mat-table [dataSource]="dataSource" >
+
+     <!-- <ng-container matColumnDef="razao_social">
+       <th scope="col" mat-header-cell *matHeaderCellDef > Id </th>
+       <td mat-cell *matCellDef="let element"> {{element.fidicEmpresaId }} </td>
+     </ng-container> -->
+
+     <ng-container matColumnDef="id">
+       <th scope="col" mat-header-cell *matHeaderCellDef > Nº nota </th>
+       <td mat-cell *matCellDef="let element"> {{element.id}}  </td>
+     </ng-container>
+
+
+     <ng-container matColumnDef="valor">
+       <th scope="col" mat-header-cell *matHeaderCellDef> Valor Nota </th>
+       <td mat-cell currencyMask *matCellDef="let  element">R$ {{element.valor}} </td>
+     </ng-container>
+
+     <ng-container matColumnDef="data_emissao">
+      <th scope="col" mat-header-cell *matHeaderCellDef> Data Emissão </th>
+      <td mat-cell *matCellDef="let element">{{element.data_emissao | date: "dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th scope="col" mat-header-cell *matHeaderCellDef>E-mail </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+
+     <ng-container matColumnDef="parametros">
+       <th scope="col" mat-header-cell *matHeaderCellDef></th>
+       <td mat-cell *matCellDef="let element"  >
+         <!-- <button mat-button style="color: blue;" >
+           <fa-icon [icon]="faFile"></fa-icon>
+         </button> -->
+        <button mat-button style="color: red;" >
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+       </td>
+     </ng-container>
+
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+   <mat-paginator [pageSizeOptions]="[8,10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+ </div>
+ <br>
+ <button mat-button [routerLink]="['/dashboard']" >voltar</button>
+ <br>
+</div>
+

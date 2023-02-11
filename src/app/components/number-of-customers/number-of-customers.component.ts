@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 @Component({
   selector: 'app-number-of-customers',
@@ -6,68 +6,60 @@ import { Chart } from 'angular-highcharts';
   styleUrls: ['./number-of-customers.component.scss']
 })
 export class NumberOfCustomersComponent implements OnInit {
-
-  chart = new Chart({
-    chart: {
-      type: 'column',
-      height: 325
-    },
-    title: {
-      text: 'Month wise sales'
-    },
-    xAxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ]
-    },
-    yAxis: {
-      title: {
-        text: 'Revenue in $'
-      }
-    },
-    series: [
-      {
-        name: "Arizona",
-        type: "column",
-        color: '#044342',
-        data: [70, 69, 95, 145, 182, 215, 252, 265, 233, 183, 139, 196]
-      },
-      {
-        name: 'Connecticut',
-        type: 'column',
-        color: '#7e0505',
-        data: [
-          47, 52, 44, 35, 58, 69, 32, 53, 71, 82, 99, 159
-        ]
-      },
-      {
-        name: 'Ohio',
-        type: 'column',
-        color: '#ed9e20',
-        data: [
-          17, 22, 14, 25, 18, 19, 22, 43, 11, 32, 29, 59
-        ]
-      },
-    ],
-    credits: {
-      enabled: false
-    }
-  })
-
+  chart: any;
+  @Input() qtdSimplesNacionalClientes: number = 0;
+  @Input() qtdLucroPresumidoClientes: number = 0;
+  @Input() qtdTotalDeClientes: number = 0;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+
+    this.chart = new Chart({
+      chart: {
+        type: 'column',
+        height: 325
+      },
+      title: {
+        text: 'Categorias'
+      },
+      xAxis: {
+        categories: [
+          '',
+        ]
+      },
+      yAxis: {
+        title: {
+          text: 'Quantidades de Clientes Categorias'
+        }
+      },
+      series: [
+        {
+        type: 'column',
+        name: 'Simples Nacional',
+        color: 'rgb(237, 158, 32)',
+        data: [this.qtdSimplesNacionalClientes]
+      },
+      {
+        type: 'column',
+        name: 'Lucro Presumido',
+        color: 'rgb(126, 5, 5)',
+        data: [this.qtdLucroPresumidoClientes]
+      },
+      {
+        type: 'column',
+        name: 'Clientes',
+        color: '#044342',
+        data: [this.qtdTotalDeClientes]
+      },
+    ],
+      credits: {
+        enabled: false
+      }
+    })
   }
 
 }

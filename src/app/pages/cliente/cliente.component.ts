@@ -11,11 +11,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cliente.component.scss']
 })
 export class ClienteComponent implements OnInit {
-
+  clientes: Cliente[] = []
   constructor(private service: ClienteService, private spinner: NgxSpinnerService, private toastr: ToastrService) { }
 
+
   ngOnInit(): void {
-    this.service.getAll().subscribe(res => console.log(res));
+    this.service.findByRazaoSocial("").subscribe((res) => this.clientes = res
+    )
     // this.spinner.show();
 
     // setTimeout(() => {
@@ -32,6 +34,22 @@ export class ClienteComponent implements OnInit {
         throw err
       })
     )
-    .subscribe(() => this.toastr.success("Cadastro feito com sucesso"))
+    .subscribe(() => {
+      this.toastr.success("Cadastro feito com sucesso")
+    })
+  }
+
+  submitFilter(model: string){
+    this.service
+    .findByRazaoSocial(model)
+    .subscribe(
+      (res) =>{
+         this.clientes = res
+        }
+    )
+  }
+
+  submitDelete(model: any){
+    this.service.delete(model).subscribe()
   }
 }

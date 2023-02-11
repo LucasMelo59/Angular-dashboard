@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   faDashboard,
-  faUser
+  faUser,
+  faFile
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -12,7 +13,7 @@ export class SideNavComponent implements OnInit {
 
   faDashboard = faDashboard;
   faUser = faUser;
-
+  faFile = faFile
   constructor() { }
 
   ngOnInit(): void {

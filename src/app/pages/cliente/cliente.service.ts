@@ -22,8 +22,8 @@ import { Cliente } from "src/app/model/entity/cliente";
       return this.http.post<Cliente>(`${this.apiUrl}`, model)
     }
 
-    findByRazaoSocial (model: any): Observable<Cliente>{
-      return this.http.get<Cliente>(`${this.apiUrl}/find`, {headers: {razaoSocial: model}})
+    findByRazaoSocial (model: string): Observable<Cliente[]>{
+      return this.http.get<Cliente[]>(`${this.apiUrl}/find`, {headers: {razao_social: model}})
     }
 
     delete(model: number) {

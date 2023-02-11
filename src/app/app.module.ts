@@ -16,6 +16,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { MaterialModule } from '../assets/modules/material.module';
 import { CadastroClientesComponent } from './pages/cadastro-clientes/cadastro-clientes.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NotasFicaisComponent } from './pages/notas-ficais/notas-ficais.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponentTemplate,
     HomeComponent,
     ClienteComponent,
-    CadastroClientesComponent
+    CadastroClientesComponent,
+    NotasFicaisComponent
   ],
   imports: [
     BrowserModule,

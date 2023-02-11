@@ -1,0 +1,34 @@
+<div class="mat-dialog-padding">
+  <h1 mat-dialog-title>Cadastro de Notas</h1>
+
+  <div mat-dialog-content *ngIf="cadastroForm">
+    <form class="login" [formGroup]="cadastroForm" class="pb-3">
+
+      <mat-form-field  >
+        <input cdkFocusInitial type="number" name="valor_nota" formControlName="valor_nota"  matInput
+          placeholder="Valor da nota"  >
+      </mat-form-field >
+
+      <mat-form-field>
+        <input  type="date" name="data_emissao" formControlName="data_emissao" currencyMask matInput  placeholder="Data de Emissão"  >
+      </mat-form-field>
+
+      <h4>Basic mat-select</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione um cliente</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let clientes of clientes" [value]="clientes.value">
+            {{clientes.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+  </div>
+
+  <div class="mt-2" mat-dialog-actions fxFlexFill fxLayout="row wrap" fxLayoutAlign="space-between">
+    <button class="col-md-5 mt-2" mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
+    <button class="col-md-5 mt-2" mat-raised-button color="primary" [disabled]="cadastroForm.invalid"  >Cadastrar</button>
+  </div>
+  <br>
+</div>
