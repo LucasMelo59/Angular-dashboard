@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
+import { HomeService } from '../../pages/home/home.service';
 
 @Component({
   selector: 'app-customers-by-type-taxation',
@@ -7,22 +8,29 @@ import { Chart } from 'angular-highcharts';
   styleUrls: ['./customers-by-type-taxation.component.scss']
 })
 export class CustomersByTypeTaxationComponent implements OnInit {
+  @Input() qtdSimplesNacionalClientes: number = 0;
+  @Input() qtdLucroPresumidoClientes: number = 0;
+  @Input() qtdTotalDeClientes: number = 0;
 
-  chart = new Chart({
+  constructor(private service: HomeService) { }
+
+  ngOnInit(): void {
+    this.qtdSimplesNacionalClientes = (this.qtdSimplesNacionalClientes/this.qtdTotalDeClientes)*100
+    this.qtdLucroPresumidoClientes = (this.qtdLucroPresumidoClientes/this.qtdTotalDeClientes)*100
+  }
+
+  chart =  new Chart ({
     chart: {
       type: 'pie',
       height: 325
     },
     title: {
-      text: 'Category wise sales'
+      text: 'Categoria por clientes'
     },
     xAxis: {
       categories: [
-        'Electronics',
-        'Groceries',
-        'Cosmetics',
-        'Clothes',
-        'Appliances',
+        'Tipo Simples Nacional',
+        'Tipo Lucro Presumido',
       ]
     },
     yAxis: {
@@ -35,29 +43,14 @@ export class CustomersByTypeTaxationComponent implements OnInit {
       type: 'pie',
       data: [
         {
-          name: 'Electronics',
-          y: 41.0,
-          color: '#044342',
+          name: 'Simples Nacional',
+          y: 33.3,
+          color: 'rgb(237, 158, 32)',
         },
         {
-          name: 'Groceries',
-          y: 33.8,
+          name: 'Lucro Presumido',
+          y:76 ,
           color: '#7e0505',
-        },
-        {
-          name: 'Cosmetics',
-          y: 6.5,
-          color: '#ed9e20',
-        },
-        {
-          name: 'Clothes',
-          y: 15.2,
-          color: '#6920fb',
-        },
-        {
-          name: 'Appliances',
-          y: 3.5,
-          color: '#121212',
         },
       ]
      }
@@ -66,10 +59,5 @@ export class CustomersByTypeTaxationComponent implements OnInit {
       enabled: false
     }
   })
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

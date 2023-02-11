@@ -29,4 +29,11 @@ import { Cliente } from "src/app/model/entity/cliente";
       return this.http.delete(`${this.apiUrl}/${model}`);
     }
 
+    countCLientes(): Observable<number>{
+      return this.http.get<number>(`${this.apiUrl}/countCLientes`)
+    }
+
+    countCLienteForType(model: string):  Observable<number>{
+      return this.http.post<number>(`${this.apiUrl}/countPorTipo`, model)
+    }
   }

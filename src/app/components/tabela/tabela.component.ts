@@ -1,8 +1,13 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClienteService } from '../../pages/cliente/cliente.service';
 import { Cliente } from '../../model/entity/cliente';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { FormComponent } from '../form/form.component';
 
 
 const ELEMENT_DATA: any[] = [
@@ -34,13 +39,20 @@ const ELEMENT_DATA: any[] = [
   styleUrls: ['./tabela.component.scss']
 })
 export class TabelaComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource =  new MatTableDataSource<any>(ELEMENT_DATA) ;
+  displayedColumns: string[] = ['cnpj','razao_social',  'tipoRegimeTributario', 'email'];
+  @Output() submitCadastroEmit = new EventEmitter()
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  Clientes: Cliente[] = [];
+  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
 
+  nome = new FormControl();
+
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+
+
     // const teste = {
     //   razao_social: null
     // }
@@ -56,9 +68,25 @@ export class TabelaComponent implements OnInit, AfterViewInit {
     //   }
     // )
   }
-  constructor(private service: ClienteService) { }
+  constructor(private service: ClienteService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  submited(model: Cliente) {
+    this.submitCadastroEmit.emit(model);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(FormComponent, {
+      width: '100%',
+      maxWidth: '500px',
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.submited(result);
+      }
+    })
   }
 
 }

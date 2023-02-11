@@ -1,12 +1,12 @@
 <div class="top-section">
-  <app-top-widgets></app-top-widgets>
+  <app-top-widgets [totalCliente]="qtdClientesTotal" [tipoSimplesNacional]="qtdClientesTipoSimplesNacional" [tipoLucroPresumido]="qtdClientesTipoLucroPresumido" ></app-top-widgets>
 </div>
 <div class="middle-section">
   <div class="widget left">
-    <app-number-of-customers></app-number-of-customers>
+    <app-number-of-customers  ></app-number-of-customers>
   </div>
   <div class="widget right">
-    <app-customers-by-type-taxation></app-customers-by-type-taxation>
+    <app-customers-by-type-taxation [qtdSimplesNacionalClientes]="qtdClientesTipoSimplesNacional" [qtdLucroPresumidoClientes]="qtdClientesTipoLucroPresumido" [qtdTotalDeClientes]="qtdClientesTotal" ></app-customers-by-type-taxation>
   </div>
 </div>
 <!-- <div class="bottom-section">

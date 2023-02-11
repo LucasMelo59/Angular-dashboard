@@ -24,6 +24,10 @@
     &.blue {
       background-color: rgb(105, 32, 251);
     }
+    &:hover{
+      transition: 2s;
+      background-color: rgb(40, 32, 251);
+    }
     @media only screen and (max-width: 1600px) {
       width: 300px;
     }

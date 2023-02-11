@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {
-  faLocation,
-  faShop,
-  faBoxes,
   faMoneyBill,
+  faMoneyBillTransfer,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -12,11 +11,8 @@ import {
   styleUrls: ['./top-widgets.component.scss']
 })
 export class TopWidgetsComponent implements OnInit {
-
-  faLocation = faLocation;
-  faShop = faShop;
-  faBoxes = faBoxes;
-  faMoneyBill = faMoneyBill;
+  faUser = faUser;
+  faMoneyBillsTransfer = faMoneyBillTransfer;
   @Input() totalCliente: number = 0;
   @Input() tipoSimplesNacional: number = 0;
   @Input() tipoLucroPresumido: number = 0;

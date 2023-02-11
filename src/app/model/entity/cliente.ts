@@ -1,7 +1,7 @@
 export interface Cliente{
-  id: number,
-  razaoSocial: string,
+  id?: number,
+  razao_social: string,
   cnpj: string,
-  tipoRegimeTributario: string,
+  tipo_regime_tributario: string,
   email: string
 }

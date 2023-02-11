@@ -1,28 +1,28 @@
 <div class="widget-container">
-  <div class="widget green">
+  <div class="widget green" style="cursor: pointer;" [routerLink]="['/clientes']">
     <div class="icon">
-      <fa-icon [icon]="faLocation"></fa-icon>
+      <fa-icon [icon]="faUser"></fa-icon>
     </div>
     <div class="value">
-      <div class="top">32</div>
+      <div class="top">{{totalCliente}}</div>
       <div class="bottom">Total Clientes</div>
     </div>
   </div>
   <div class="widget yellow">
     <div class="icon">
-      <fa-icon [icon]="faShop"></fa-icon>
+      <fa-icon [icon]="faMoneyBillsTransfer"></fa-icon>
     </div>
     <div class="value">
-      <div class="top">295</div>
+      <div class="top">{{tipoSimplesNacional}}</div>
       <div class="bottom">Tipo Simples Nacional</div>
     </div>
   </div>
   <div class="widget red">
     <div class="icon">
-      <fa-icon [icon]="faBoxes"></fa-icon>
+      <fa-icon [icon]="faMoneyBillsTransfer"></fa-icon>
     </div>
     <div class="value">
-      <div class="top">45784</div>
+      <div class="top">{{tipoLucroPresumido}}</div>
       <div class="bottom">Tipo Lucro Presumido</div>
     </div>
   </div>

@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MaterialModule } from '../assets/modules/material.module';
 import { CadastroClientesComponent } from './pages/cadastro-clientes/cadastro-clientes.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,13 @@ import { CadastroClientesComponent } from './pages/cadastro-clientes/cadastro-cl
     BrowserAnimationsModule,
     CommonModule,
     AppRoutingModule,
+    MaterialModule,
     ComponentsModule,
     FontAwesomeModule,
     RouterModule,
     HttpClientModule,
     NgxSpinnerModule,
-    MaterialModule
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

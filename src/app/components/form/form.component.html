@@ -1,18 +1,35 @@
-<form action="">
-  <div>
-    <input type="text">
-    <label for="">Razão Social</label>
+<div class="mat-dialog-padding">
+  <h1 mat-dialog-title>Cadastro de Clientes</h1>
+
+  <div mat-dialog-content *ngIf="cadastroForm">
+    <form class="login" [formGroup]="cadastroForm" class="pb-3">
+
+      <mat-form-field  >
+        <input cdkFocusInitial type="text" name="razao_social" formControlName="razao_social"  matInput
+          placeholder="Razão Social"  >
+      </mat-form-field >
+
+      <mat-form-field>
+        <input  type="text" name="cnpj" formControlName="cnpj" currencyMask matInput  placeholder="Cnpj"  >
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="email" name="email" formControlName="email" currencyMask  matInput  placeholder="E-mail" >
+      </mat-form-field>
+
+      <label>Tipo de Regime Tributário:</label>
+      <br/>
+      <mat-radio-group aria-label="RegimeTributario" formControlName="tipoRegimeTributario" >
+        <mat-radio-button [value]="'SIMPLES_NACIONAL'">Simples Nacional</mat-radio-button>
+        <mat-radio-button [value]="'LUCRO_PRESUMIDO'">Lucro Presumido</mat-radio-button>
+      </mat-radio-group>
+
+    </form>
   </div>
-  <div>
-    <input type="text">
-    <label for="">Cnpj</label>
+
+  <div class="mt-2" mat-dialog-actions fxFlexFill fxLayout="row wrap" fxLayoutAlign="space-between">
+    <button class="col-md-5 mt-2" mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
+    <button class="col-md-5 mt-2" mat-raised-button color="primary" [disabled]="cadastroForm.invalid" (click)="submit()" >Cadastrar</button>
   </div>
-  <div>
-    <input type="text">
-    <label for="">Tipo</label>
-  </div>
-  <div>
-    <input type="text">
-    <label for="">Email:</label>
-  </div>
-</form>
+  <br>
+</div>
