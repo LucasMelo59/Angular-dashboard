@@ -3,13 +3,12 @@
 <div class="ml-2 mt-3 mr-2" >
   <div class="table-inputs " >
     <mat-form-field class="filter mr-2"  appearance="fill">
-      <mat-icon matPrefix>filter_alt</mat-icon>
-      <mat-label>Clientes</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let cliente of clientes" [value]="cliente.value">
-          {{cliente.viewValue}}
-        </mat-option>
-      </mat-select>
+     <mat-label>Selecione o Cliente</mat-label>
+      <select  matNativeControl (change)="submitedFilter($event)">
+        <option value=""></option>
+        <option *ngFor="let option of clientes" [value]="option.id"
+               >{{ option.razaoSocial }}</option>
+      </select>
     </mat-form-field>
    <div class="button" >
     <button  mat-raised-button color="primary" (click)="openDialog()" >Cadastrar Notas Fiscais</button>
@@ -40,10 +39,6 @@
       <td mat-cell *matCellDef="let element">{{element.data_emissao | date: "dd/MM/yyyy"}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="email">
-      <th scope="col" mat-header-cell *matHeaderCellDef>E-mail </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
 
 
      <ng-container matColumnDef="parametros">

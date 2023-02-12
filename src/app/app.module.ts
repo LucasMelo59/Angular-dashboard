@@ -14,9 +14,9 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MaterialModule } from '../assets/modules/material.module';
-import { CadastroClientesComponent } from './pages/cadastro-clientes/cadastro-clientes.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NotasFicaisComponent } from './pages/notas-ficais/notas-ficais.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,6 @@ import { NotasFicaisComponent } from './pages/notas-ficais/notas-ficais.componen
     HomeComponentTemplate,
     HomeComponent,
     ClienteComponent,
-    CadastroClientesComponent,
     NotasFicaisComponent
   ],
   imports: [
@@ -38,7 +37,8 @@ import { NotasFicaisComponent } from './pages/notas-ficais/notas-ficais.componen
     RouterModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

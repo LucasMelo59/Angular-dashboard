@@ -9,27 +9,28 @@ import {
   faTrashCan,
   faFile
 } from '@fortawesome/free-solid-svg-icons';
-import { FormComponent } from '../form-clientes/form.component';
 import { FormNotaFiscalComponent } from '../form-nota-fiscal/form-nota-fiscal.component';
+import { ClienteDto } from '../../model/dto/clienteDto';
 @Component({
   selector: 'app-tabela-notas-ficais',
   templateUrl: './tabela-notas-ficais.component.html',
   styleUrls: ['./tabela-notas-ficais.component.scss']
 })
 export class TabelaNotasFicaisComponent implements OnInit {
-  clientes:any;
-  displayedColumns: string[] = ['id','valor',  'data_emissao', 'email' ,'parametros'];
+  cliente!:any;
+  @Input() clientes: any[] = [];
+  displayedColumns: string[] = ['id','valor',  'data_emissao' ,'parametros'];
   @Output() submitCadastroEmit = new EventEmitter()
   @Output() submitFilter = new EventEmitter()
   @Input() notaFiscal: NotaFiscal[] = [];
   dataSource: any;
+
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<NotaFiscal>(this.notaFiscal);
   }
+
   faTrash = faTrashCan;
   faFile = faFile
-  nome = new FormControl();
-
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngAfterViewInit() {
@@ -38,21 +39,22 @@ export class TabelaNotasFicaisComponent implements OnInit {
   constructor( private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.nome.valueChanges.subscribe((value: string) => this.submitedFilter(value))
+    // this.cliente.valueChanges.subscribe((value: any) => this.submitedFilter(value))
   }
 
   submited(model: NotaFiscal) {
     this.submitCadastroEmit.emit(model);
   }
 
-  submitedFilter(value: string){
-    this.submitFilter.emit(value)
+  submitedFilter(value: any){
+    this.submitFilter.emit(value.target.value)
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(FormNotaFiscalComponent, {
       width: '100%',
       maxWidth: '500px',
+      data: this.clientes
     })
     dialogRef.afterClosed().subscribe(result => {
       if(result){

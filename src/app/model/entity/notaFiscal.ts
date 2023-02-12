@@ -1,6 +1,6 @@
 export interface NotaFiscal{
   id?: number,
-  cliente_id: number,
+  cliente: number,
   valor: number,
-  data_emissao: Date
+  data_emissao: string
 }

@@ -13,12 +13,11 @@
         <input  type="date" name="data_emissao" formControlName="data_emissao" currencyMask matInput  placeholder="Data de Emissão"  >
       </mat-form-field>
 
-      <h4>Basic mat-select</h4>
       <mat-form-field appearance="fill">
         <mat-label>Selecione um cliente</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let clientes of clientes" [value]="clientes.value">
-            {{clientes.viewValue}}
+        <mat-select formControlName="cliente" >
+          <mat-option *ngFor="let clientes of clientes" [value]="clientes.id">
+            {{clientes.razaoSocial}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -28,7 +27,7 @@
 
   <div class="mt-2" mat-dialog-actions fxFlexFill fxLayout="row wrap" fxLayoutAlign="space-between">
     <button class="col-md-5 mt-2" mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
-    <button class="col-md-5 mt-2" mat-raised-button color="primary" [disabled]="cadastroForm.invalid"  >Cadastrar</button>
+    <button class="col-md-5 mt-2" mat-raised-button color="primary" [disabled]="cadastroForm.invalid" (click)="submit()" >Cadastrar</button>
   </div>
   <br>
 </div>

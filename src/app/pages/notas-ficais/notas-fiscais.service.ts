@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Cliente } from "src/app/model/entity/cliente";
 import { NotaFiscal } from '../../model/entity/notaFiscal';
+import { ClienteDto } from "src/app/model/dto/clienteDto";
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,25 @@ import { NotaFiscal } from '../../model/entity/notaFiscal';
 
     constructor(private http: HttpClient){}
 
-    apiUrl: string = 'http://localhost:8080/obterNotasFiscais'
+    apiUrl: string = 'http://localhost:8080'
 
-    getAll(): Observable<NotaFiscal[]> {
-      return this.http.get<NotaFiscal[]>(`${this.apiUrl}/notas`);
+    getAllClientes(): Observable<ClienteDto[]> {
+      return this.http.get<ClienteDto[]>(`${this.apiUrl}/clientes/dto`);
+    }
+
+    getAllNotas(): Observable<NotaFiscal[]> {
+      return this.http.get<NotaFiscal[]>(`${this.apiUrl}/obterNotasFiscais/notas`);
+    }
+
+    buscarPorNotaCliente(id: Number) :Observable<NotaFiscal[]> {
+      return this.http.get<NotaFiscal[]>(`${this.apiUrl}/obterNotasFiscais/${id}`)
     }
 
     countNotas():  Observable<number>{
-      return this.http.get<number>(`${this.apiUrl}/countNotasFiscais`)
+      return this.http.get<number>(`${this.apiUrl}/obterNotasFiscais/countNotasFiscais`)
+    }
+
+    cadastrar(model: NotaFiscal): Observable<NotaFiscal> {
+      return this.http.post<NotaFiscal>(`${this.apiUrl}/obterNotasFiscais/cadastrar`, model)
     }
   }
