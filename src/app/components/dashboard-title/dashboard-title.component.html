@@ -1,0 +1,19 @@
+<h1 mat-card-title class="ml-2">
+  <ng-content select=".title"></ng-content>
+</h1>
+
+<div class="ml-2 font-16px">
+  <a [routerLink]="['/dashboard']" class="hover">Início</a>
+  <ng-container *ngFor="let route of routes">
+    <span> / </span>
+    <a class="hover" *ngIf="route?.link; else semLink" [routerLink]="[route?.link]">
+      <strong> {{ route?.title }} </strong>
+    </a>
+
+    <ng-template #semLink>
+      <span class="hover">
+        <strong> {{ route?.title }} </strong>
+      </span>
+    </ng-template>
+  </ng-container>
+</div>

@@ -1,3 +1,7 @@
+<app-dashboard-title [routes]="[{title: 'Notas-Fiscais'}]" >
+  <span class="title" >Notas Fiscais</span>
+</app-dashboard-title>
+
 <div class="middle-section">
   <div class="table">
     <app-tabela-notas-ficais [notaFiscal]="notasFiscais" [clientes]="clientesDto" (submitCadastroEmit)="submitCadastro($event)" (submitFilter)="submitedFilter($event)" ></app-tabela-notas-ficais>

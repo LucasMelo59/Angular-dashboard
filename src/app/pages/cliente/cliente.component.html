@@ -1,3 +1,7 @@
+<app-dashboard-title [routes]="[{title: 'Clientes'}]" >
+  <span class="title" >Clientes</span>
+</app-dashboard-title>
+
 <div class="middle-section">
   <div class="table">
     <app-tabela  (submitCadastroEmit)="submitCadastro($event)" (submitFilter)="submitFilter($event)" (submitDelete)="submitDelete($event)" [Clientes]="clientes"></app-tabela>

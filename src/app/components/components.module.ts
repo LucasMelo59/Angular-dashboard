@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TabelaNotasFicaisComponent } from './tabela-notas-ficais/tabela-notas-ficais.component';
 import { FormNotaFiscalComponent } from './form-nota-fiscal/form-nota-fiscal.component';
 import { FormComponent } from './form-clientes/form.component';
+import { DashboardTitleComponent } from './dashboard-title/dashboard-title.component';
 
 
 
@@ -29,6 +30,7 @@ import { FormComponent } from './form-clientes/form.component';
     FormComponent,
     TabelaNotasFicaisComponent,
     FormNotaFiscalComponent,
+    DashboardTitleComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { FormComponent } from './form-clientes/form.component';
     CustomersByTypeTaxationComponent,
     TabelaComponent,
     FormComponent,
-    TabelaNotasFicaisComponent
+    TabelaNotasFicaisComponent,
+    DashboardTitleComponent
   ]
 })
 export class ComponentsModule { }
