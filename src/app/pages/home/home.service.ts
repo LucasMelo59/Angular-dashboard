@@ -11,7 +11,7 @@ import { Cliente } from "src/app/model/entity/cliente";
 
     constructor(private http: HttpClient){}
 
-    apiUrl: string = 'http://localhost:8080'
+    apiUrl: string = 'https://desafio-nota-fiscal-spring-production.up.railway.app/'
 
     getAll(): Observable<Cliente> {
       return this.http.get<Cliente>(`${this.apiUrl}/clientes`);
