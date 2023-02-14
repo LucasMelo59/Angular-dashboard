@@ -13,7 +13,7 @@ import { ClienteDto } from "src/app/model/dto/clienteDto";
 
     constructor(private http: HttpClient){}
 
-    apiUrl: string = 'https://desafio-nota-fiscal-spring-production.up.railway.app/'
+    apiUrl: string = 'https://desafio-nota-fiscal-spring-production.up.railway.app'
 
     getAllClientes(): Observable<ClienteDto[]> {
       return this.http.get<ClienteDto[]>(`${this.apiUrl}/clientes/dto`);
