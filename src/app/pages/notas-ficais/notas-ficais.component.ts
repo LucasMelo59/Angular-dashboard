@@ -50,7 +50,14 @@ export class NotasFicaisComponent implements OnInit {
 
   delete(model: number){
     this.spinner.show()
-    this.service.delete(model).subscribe(() => {
+    this.service.delete(model)
+    .pipe(
+      catchError(err => {
+        this.toastr.warning("Ocorreu um erro ao deletar")
+        throw err
+      })
+    )
+    .subscribe(() => {
       this.spinner.hide()
       this.toastr.success(`Entidade de numeração: ${model} foi apagada com sucesso` )
     }

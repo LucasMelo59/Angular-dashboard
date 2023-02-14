@@ -63,7 +63,7 @@ export class ClienteComponent implements OnInit {
     .delete(model)
     .pipe(
       catchError(err => {
-        this.toastr.warning("Ocorreu um erro ao deletar")
+        this.toastr.warning("Ocorreu um erro ao deletar, verifique se esse cliente ainda possui notas pendentes")
         this.spinner.hide()
         throw err
       })
