@@ -4,6 +4,6 @@
 
 <div class="middle-section">
   <div class="table">
-    <app-tabela-notas-ficais [notaFiscal]="notasFiscais" [clientes]="clientesDto" (submitCadastroEmit)="submitCadastro($event)" (submitFilter)="submitedFilter($event)" ></app-tabela-notas-ficais>
+    <app-tabela-notas-ficais [notaFiscal]="notasFiscais" [clientes]="clientesDto" (submitCadastroEmit)="submitCadastro($event)" (submitFilter)="submitedFilter($event)" (submitDelete)="delete($event)" ></app-tabela-notas-ficais>
   </div>
 </div>

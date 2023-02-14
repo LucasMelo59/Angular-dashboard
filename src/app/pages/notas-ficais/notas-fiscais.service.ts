@@ -34,4 +34,8 @@ import { ClienteDto } from "src/app/model/dto/clienteDto";
     cadastrar(model: NotaFiscal): Observable<NotaFiscal> {
       return this.http.post<NotaFiscal>(`${this.apiUrl}/obterNotasFiscais/cadastrar`, model)
     }
+
+    delete(id: number) {
+       return this.http.delete(`${this.apiUrl}/obterNotasFiscais/delete/${id}`);
+    }
   }

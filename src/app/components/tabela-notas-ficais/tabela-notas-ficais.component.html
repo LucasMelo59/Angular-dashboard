@@ -31,7 +31,7 @@
 
      <ng-container matColumnDef="valor">
        <th scope="col" mat-header-cell *matHeaderCellDef> Valor Nota </th>
-       <td mat-cell currencyMask *matCellDef="let  element">R$ {{element.valor}} </td>
+       <td mat-cell  *matCellDef="let  element">{{element.valor | number: ".2"}} </td>
      </ng-container>
 
      <ng-container matColumnDef="data_emissao">
@@ -47,7 +47,7 @@
          <!-- <button mat-button style="color: blue;" >
            <fa-icon [icon]="faFile"></fa-icon>
          </button> -->
-        <button mat-button style="color: red;" >
+        <button mat-button style="color: red;" (click)="submitedDelete(element)" >
           <fa-icon [icon]="faTrash"></fa-icon>
         </button>
        </td>

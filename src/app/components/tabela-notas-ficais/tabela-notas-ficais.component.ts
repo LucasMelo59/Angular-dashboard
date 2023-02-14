@@ -22,6 +22,7 @@ export class TabelaNotasFicaisComponent implements OnInit {
   displayedColumns: string[] = ['id','valor',  'data_emissao' ,'parametros'];
   @Output() submitCadastroEmit = new EventEmitter()
   @Output() submitFilter = new EventEmitter()
+  @Output() submitDelete = new EventEmitter()
   @Input() notaFiscal: NotaFiscal[] = [];
   dataSource: any;
 
@@ -50,6 +51,12 @@ export class TabelaNotasFicaisComponent implements OnInit {
     this.submitFilter.emit(value.target.value)
   }
 
+  submitedDelete(model: any) {
+    this.submitDelete.emit(model.id);
+    this.notaFiscal = this.notaFiscal.filter((x) => x.id !== model.id);
+    this.dataSource = new MatTableDataSource<NotaFiscal>(this.notaFiscal);
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(FormNotaFiscalComponent, {
       width: '100%',
@@ -59,6 +66,8 @@ export class TabelaNotasFicaisComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.submited(result);
+        this.notaFiscal.push(result)
+        this.dataSource = new MatTableDataSource<NotaFiscal>(this.notaFiscal);
       }
     })
   }

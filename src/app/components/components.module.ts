@@ -16,6 +16,8 @@ import { TabelaNotasFicaisComponent } from './tabela-notas-ficais/tabela-notas-f
 import { FormNotaFiscalComponent } from './form-nota-fiscal/form-nota-fiscal.component';
 import { FormComponent } from './form-clientes/form.component';
 import { DashboardTitleComponent } from './dashboard-title/dashboard-title.component';
+import { CurrencyMaskConfig, CurrencyMaskInputMode, NgxCurrencyModule } from 'ngx-currency';
+import { CNPJPipe } from 'src/assets/pipes/CNPJPipe';
 
 
 
@@ -31,6 +33,7 @@ import { DashboardTitleComponent } from './dashboard-title/dashboard-title.compo
     TabelaNotasFicaisComponent,
     FormNotaFiscalComponent,
     DashboardTitleComponent,
+    CNPJPipe
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,13 @@ import { DashboardTitleComponent } from './dashboard-title/dashboard-title.compo
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(
+      {maxOpened: 1,
+      autoDismiss: true,
+      progressBar: true,
+      preventDuplicates: true,
+      timeOut: 5000,}
+    ),
   ],
   exports: [
     HeaderComponent,

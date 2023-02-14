@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HomeService } from './home.service';
-import { async } from 'rxjs';
+import { async, catchError } from 'rxjs';
 import { Chart } from 'highcharts';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home-pages',
@@ -11,7 +12,7 @@ import { Chart } from 'highcharts';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private spinner: NgxSpinnerService, private service: HomeService) { }
+  constructor(private spinner: NgxSpinnerService, private service: HomeService, private toastr: ToastrService) { }
   qtdClientesTotal!: number;
   qtdClientesTipoSimplesNacional!: number;
   qtdClientesTipoLucroPresumido!: number;
@@ -21,27 +22,6 @@ export class HomeComponent implements OnInit {
 
 
 
-  // [
-  //
-  //   {
-  //     name: 'Connecticut',
-  //     type: 'column',
-  //     color: '#7e0505',
-  //     data: [
-  //       47
-  //     ]
-  //   },
-  //   {
-  //     name: 'Ohio',
-  //     type: 'column',
-  //     color: '#ed9e20',
-  //     data: [
-  //       17
-  //     ]
-  //   },
-  // ],
-
-
   ngOnInit(): void {
     // this.spinner.show();
 
@@ -49,7 +29,14 @@ export class HomeComponent implements OnInit {
     //   this.spinner.hide();
     // }, 2000);
 
-    this.service.countCLientes().subscribe({
+    this.service.countCLientes()
+    .pipe(
+      catchError(err => {
+        this.toastr.warning("Ocorreu um erro durante a execução")
+        throw err
+      })
+    )
+    .subscribe({
        next: (res: number) => {
          this.qtdClientesTotal = res
          this.series.push({
@@ -58,7 +45,14 @@ export class HomeComponent implements OnInit {
       }
     })
 
-    this.service.countCLienteForType("SIMPLES_NACIONAL").subscribe((res) => {
+    this.service.countCLienteForType("SIMPLES_NACIONAL")
+    .pipe(
+      catchError(err => {
+        this.toastr.warning("Ocorreu um erro durante a execução")
+        throw err;
+      })
+    )
+    .subscribe((res) => {
       this.qtdClientesTipoSimplesNacional = res;
       this.data.push({
         name: 'Simples Nacional',
@@ -69,10 +63,16 @@ export class HomeComponent implements OnInit {
        this.series.push({
         data: res
        })
-       console.log(this.series);
 
     })
-    this.service.countCLienteForType("LUCRO_PRESUMIDO").subscribe((res) => {
+    this.service.countCLienteForType("LUCRO_PRESUMIDO")
+    .pipe(
+      catchError(err => {
+        this.toastr.warning("Ocorreu um erro durante a execução")
+        throw err
+      })
+    )
+    .subscribe((res) => {
       this.qtdClientesTipoLucroPresumido = res;
       this.data.push({
           name: 'Lucro Presumido',

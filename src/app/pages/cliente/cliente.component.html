@@ -2,8 +2,8 @@
   <span class="title" >Clientes</span>
 </app-dashboard-title>
 
-<div class="middle-section">
-  <div class="table">
+<div class="middle-section row">
+  <div class="table col-md-12 ">
     <app-tabela  (submitCadastroEmit)="submitCadastro($event)" (submitFilter)="submitFilter($event)" (submitDelete)="submitDelete($event)" [Clientes]="clientes"></app-tabela>
   </div>
 </div>

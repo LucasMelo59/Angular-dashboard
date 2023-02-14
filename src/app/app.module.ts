@@ -17,6 +17,7 @@ import { MaterialModule } from '../assets/modules/material.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NotasFicaisComponent } from './pages/notas-ficais/notas-ficais.component';
 import { FormsModule } from '@angular/forms';
+import { CNPJPipe } from 'src/assets/pipes/CNPJPipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponentTemplate,
     HomeComponent,
     ClienteComponent,
-    NotasFicaisComponent
+    NotasFicaisComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

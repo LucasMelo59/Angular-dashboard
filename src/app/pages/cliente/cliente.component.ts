@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteService } from './cliente.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Cliente } from '../../model/entity/cliente';
-import { catchError } from 'rxjs';
+import { catchError, map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -12,36 +12,43 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ClienteComponent implements OnInit {
   clientes: Cliente[] = []
-  constructor(private service: ClienteService, private spinner: NgxSpinnerService, private toastr: ToastrService) { }
+  constructor(private service: ClienteService, private toastr: ToastrService, private spinner: NgxSpinnerService) { }
 
 
   ngOnInit(): void {
     this.service.findByRazaoSocial("").subscribe((res) => this.clientes = res
     )
-    // this.spinner.show();
 
-    // setTimeout(() => {
-    //   this.spinner.hide();
-    // }, 2000);
   }
 
   submitCadastro(model: Cliente){
+    this.spinner.show()
     this.service
     .register(model)
     .pipe(
       catchError(err => {
         this.toastr.warning("Ocorreu um erro ao efetuar o cadastro")
+        this.spinner.hide()
         throw err
       })
     )
     .subscribe(() => {
       this.toastr.success("Cadastro feito com sucesso")
+      this.spinner.hide()
     })
   }
 
   submitFilter(model: string){
     this.service
     .findByRazaoSocial(model)
+    .pipe(
+      (
+        catchError(err => {
+          this.toastr.warning("Ocorreu um erro ao filtrar")
+          throw err
+        })
+      )
+    )
     .subscribe(
       (res) =>{
          this.clientes = res
@@ -50,6 +57,18 @@ export class ClienteComponent implements OnInit {
   }
 
   submitDelete(model: any){
-    this.service.delete(model).subscribe()
+    console.log(model);
+    this.spinner.show()
+    this.service
+    .delete(model)
+    .pipe(
+      catchError(err => {
+        this.toastr.warning("Ocorreu um erro ao deletar")
+        this.spinner.hide()
+        throw err
+      })
+    )
+    .subscribe(() =>this.spinner.hide()
+    )
   }
 }
